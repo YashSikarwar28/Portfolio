@@ -530,7 +530,7 @@ export const sidebarStyles = {
 
   // Desktop sidebar
   desktopSidebar:
-    "hidden md:flex flex-col w-[260px] h-screen px-6 py-8 bg-zinc-950 border-r border-zinc-800 fixed left-0 top-0 overflow-y-auto",
+    "hidden md:flex flex-col w-[260px] h-screen px-6 py-8 bg-zinc-950 border-r border-zinc-800 fixed left-0 top-0",
   desktopAvatarContainer: "flex items-center gap-3 mb-4",
   desktopAvatar:
     "w-12 h-12 rounded-full overflow-hidden ring-1 ring-white/10 shadow-sm",
