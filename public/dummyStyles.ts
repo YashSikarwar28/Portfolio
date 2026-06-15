@@ -531,26 +531,26 @@ export const sidebarStyles = {
   // Desktop sidebar
   desktopSidebar:
     "hidden md:flex flex-col w-[260px] h-screen px-6 py-8 bg-zinc-950 border-r border-zinc-800 fixed left-0 top-0 overflow-y-auto",
-  desktopAvatarContainer: "flex items-center gap-3 mb-6",
+  desktopAvatarContainer: "flex items-center gap-3 mb-4",
   desktopAvatar:
     "w-12 h-12 rounded-full overflow-hidden ring-1 ring-white/10 shadow-sm",
   desktopAvatarImage: "object-cover",
   desktopName: "font-semibold text-zinc-100",
-  desktopTyping: "text-xs text-zinc-400",
+  desktopTyping: "text-xs text-zinc-400 whitespace-nowrap",
 
   // Navigation
   navContainer: "flex-1",
-  navList: "space-y-2",
+  navList: "space-y-1",
   navItem:
-    "flex items-center gap-3 px-3 py-3 rounded-lg transition-colors duration-150",
+    "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors duration-150",
   navItemActive: "bg-zinc-800 text-zinc-50",
   navItemInactive: "text-zinc-200 hover:bg-zinc-800 hover:text-zinc-50",
   navIcon: "w-4 h-4 text-zinc-300",
   navLabel: "text-sm",
 
   // Social section
-  connectLabel: "mt-8 text-xs text-zinc-500",
-  socialList: "mt-3 space-y-2 text-sm",
+  connectLabel: "mt-4 text-xs text-zinc-500",
+  socialList: "mt-2 space-y-3 text-sm",
   socialItem:
     "group flex items-center gap-2 text-zinc-300 hover:text-zinc-50 transition-colors",
   socialIcon: "w-4 h-4",

@@ -344,10 +344,123 @@ export default function Sidebar(): React.ReactElement {
           className={`${s.mobileOverlayBg} ${isMobileMenuOpen ? s.mobileOverlayBgVisible : s.mobileOverlayBgHidden}`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
-        <div></div>
+        <div
+          className={`${s.mobileSidebar} ${isMobileMenuOpen ? s.mobileSidebarVisible : s.mobileSidebarHidden}`}
+        >
+          <div className={s.mobileSidebarHeader}>
+            <div className={s.mobileHeaderInner}>
+              <div className={s.mobileAvatarContainer}>
+                <div className={s.mobileAvatar}>
+                  <Image
+                    src="/Hexagon.png"
+                    alt="Yash Sikarwar"
+                    width={40}
+                    height={40}
+                    className={s.mobileAvatarImage}
+                    priority
+                  />
+                </div>
+                <div>
+                  <div className={s.mobileName}>Yash Sikarwar</div>
+                  <TypingAnimation
+                    className={s.mobileTyping}
+                    words={[
+                      "Full-Stack Developer",
+                      "Open Source Contributor",
+                      "AI Practitioner",
+                    ]}
+                    loop
+                  />
+                </div>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={s.mobileCloseButton}
+                aria-label="Close Menu"
+              >
+                <CloseIcon className={s.mobileCloseIcon} />
+              </button>
+            </div>
+          </div>
+
+          <div className={s.mobileContent}>
+            <nav className="mb-8">
+              <div className={s.mobileSectionLabel}>Home</div>
+              <ul className={s.mobileNavList}>
+                {navItems.map(({ href, label, Icon }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`${s.mobileNavItem} ${pathname === href ? s.navItemActive : s.navItemInactive}`}
+                      aria-label={pathname === href ? "page" : undefined}
+                    >
+                      <Icon className={s.mobileNavIcon} />
+                      <span className={s.mobileNavLabel}>{label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className={s.mobileSocialSection}>
+              <div className={s.mobileSectionLabel}>Connect</div>
+              <div className={s.mobileSocialList}>
+                {socials.map((soc) => (
+                  <a
+                    key={soc.label}
+                    href={soc.href}
+                    className={s.mobileSocialIcon}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <svg className={s.mobileSocialIcon} viewBox="0 0 24 24">
+                      <path d={soc.svgPath} />
+                    </svg>
+                    <span className={s.mobileSocialText}>{soc.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={s.mobileFooter}>
+            <div className={s.mobileFooterLabel}>Reach Out</div>
+            <div className={s.mobileFooterText}>
+              <div>Made by Yash | © {new Date().getFullYear()}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={s.bottomNav}>
+        <div className={s.bottomNavContainer}>
+          <div className={s.bottomNavInner}>
+            <div className={s.bottomNavBar}>
+              <div className={s.bottomNavGrid}>
+                {navItems.map(({ href, label, Icon }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`${s.bottomNavLink} ${pathname === href ? s.bottomNavLinkActive : s.bottomNavLinkInactive}`}
+                    aria-label={label}
+                  >
+                    <Icon className={s.bottomNavIcon} />
+                  </Link>
+                ))}
+              </div>
+              <div className={s.bottomNavDivider}></div>
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className={s.bottomMenuButton}
+                aria-label="Open Menu"
+              >
+                <MenuIcon className={s.bottomMenuIcon} />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
 }
-
-//1:04:40
