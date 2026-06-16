@@ -334,7 +334,7 @@ export const projectStyles = {
     "group relative h-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 transition-all duration-300 hover:border-zinc-700 hover:bg-zinc-900 hover:shadow-2xl hover:shadow-zinc-950/50",
 
   // Image container
-  imageContainer: "relative aspect-[16/10] w-full overflow-hidden bg-zinc-800",
+  imageContainer: "relative aspect-[16/7] w-full overflow-hidden bg-zinc-800",
   projectImage:
     "h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105",
 
@@ -350,9 +350,9 @@ export const projectStyles = {
   bookmarkIcon: "h-4 w-4 text-zinc-400",
 
   // Content section
-  contentSection: "p-6",
+  contentSection: "p-2",
   projectTitle: "text-xl font-bold text-zinc-100 group-hover:text-zinc-50",
-  projectDescription: "mt-2 line-clamp-2 text-sm leading-relaxed text-zinc-400",
+  projectDescription: "mt-2 line-clamp-1 text-sm leading-relaxed text-zinc-400",
 
   // Tags
   tagsContainer: "mt-4 flex flex-wrap gap-2",

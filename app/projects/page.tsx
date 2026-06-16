@@ -1,55 +1,70 @@
-"use client"
+"use client";
 
 import { projects, Project } from "@/lib/project-data";
 import { projectStyles as s } from "@/public/dummyStyles";
 import { FollowerPointerCard } from "../components/ui/following-pointer";
 import { useRouter } from "next/navigation";
 
+const TitleComponent = ({
+  title,
+  avatar,
+}: {
+  title: string;
+  avatar: string;
+}) => (
+  <div className={s.titleComponentContainer}>
+    <img
+      src={avatar}
+      height="20"
+      width="20"
+      alt={title}
+      className={s.titleComponentAvatar}
+    ></img>
 
-  const TitleComponent = ({
-    title,avatar
-  }:{title:string;avatar:string;}) => (
-    <div className={s.titleComponentContainer}>
-      <img src={avatar} height="20" width="20" alt={title} className={s.titleComponentAvatar} ></img>
-
-      <p className={s.titleComponentText}>{title}</p>
-    </div>
-  )
-
+    <p className={s.titleComponentText}>{title}</p>
+  </div>
+);
 
 export default function ProjectsPage() {
-  return(
+  return (
     <div className={s.pageContainer}>
-        <div className={s.innerContainer}>
-          <div className={s.header}>
-            <h1 className={s.pageTitle}>
-              Projects
-            </h1>
-            <p className={s.pageSubtitle}>
-              Playgorund - Small MVP to production apps
-            </p>
-          </div>
-          <div className={s.projectsGrid}>
-              {projects.map((project)=>(
-                <FollowerPointerCard key={project.slug} title={<TitleComponent title={project.author} avatar={project.authorAvatar}/>}
-                >
-                  <ProjectCard project={project}/>
-                </FollowerPointerCard>
-              ))}
-          </div>
+      <div className={s.innerContainer}>
+        <div className={s.header}>
+          <h1 className={s.pageTitle}>Projects</h1>
+          <p className={s.pageSubtitle}>
+            Playgorund - Small MVP to production apps
+          </p>
         </div>
+        <div className={s.projectsGrid}>
+          {projects.map((project) => (
+            <FollowerPointerCard
+              key={project.slug}
+              title={
+                <TitleComponent
+                  title={project.author}
+                  avatar={project.authorAvatar}
+                />
+              }
+            >
+              <ProjectCard project={project} />
+            </FollowerPointerCard>
+          ))}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-function ProjectCard ({project}:{project:Project}){
-  const router=useRouter();
+function ProjectCard({ project }: { project: Project }) {
+  const router = useRouter();
 
   return (
-    <div className={s.projectCard}
+    <div
+      className={s.projectCard}
       onClick={() => {
         router.push(`/projects/${project.slug}`);
-      }}>
+      }}
+    >
       <div className={s.imageContainer}>
         <img
           src={project.image}
@@ -145,7 +160,7 @@ function ProjectCard ({project}:{project:Project}){
           </div>
           <div className="flex gap-1">
             {project.links.archive && (
-              <span className={s.archivedText}></span>
+              <span className={s.archivedText}>Archieved</span>
             )}
           </div>
         </div>

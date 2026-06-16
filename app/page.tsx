@@ -6,6 +6,7 @@ import React, { useEffect, useRef } from "react";
 import { Spotlight } from "./components/ui/Spotlight";
 import { PointerHighlight } from "./components/ui/pointer-highlight";
 import Link from "next/link";
+import ProjectsPage from "./projects/page";
 
 export default function HomePage(): React.ReactElement {
   const videoref = useRef<HTMLVideoElement>(null);

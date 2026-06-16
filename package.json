@@ -9,11 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tsparticles/engine": "^4.1.3",
     "@tsparticles/react": "^4.1.3",
     "@tsparticles/slim": "^4.1.3",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
+    "lucide": "^1.3.0",
+    "lucide-react": "^0.562.0",
     "motion": "^12.40.0",
     "next": "16.2.9",
     "react": "^18.3.1",
