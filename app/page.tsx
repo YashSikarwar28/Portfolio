@@ -3,10 +3,34 @@
 import { cn } from "@/lib/utils";
 import { homePageStyles, spotlightStyles } from "@/public/dummyStyles";
 import React, { useEffect, useRef } from "react";
-import { Spotlight } from "./components/ui/Spotlight";
+//import { Spotlight } from "./components/ui/Spotlight";
 import { PointerHighlight } from "./components/ui/pointer-highlight";
+import { GitHubCalendar } from "react-github-calendar";
 import Link from "next/link";
-import ProjectsPage from "./projects/page";
+import { Code2, Github, Linkedin, Mail } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiMongodb,
+  SiPostgresql,
+  SiPrisma,
+  SiLangchain,
+  SiTypescript,
+  SiTailwindcss,
+  SiRedux,
+  SiBootstrap,
+  SiExpress,
+  SiMysql,
+  SiStreamlit,
+  SiLanggraph,
+} from "react-icons/si";
+import { SiJavascript } from "react-icons/si";
+import { SiPython } from "react-icons/si";
+
+import { FaJava } from "react-icons/fa";
+import { BsRobot } from "react-icons/bs";
+import { TbApi, TbBrain } from "react-icons/tb";
 
 export default function HomePage(): React.ReactElement {
   const videoref = useRef<HTMLVideoElement>(null);
@@ -19,158 +43,281 @@ export default function HomePage(): React.ReactElement {
     }
   }, []);
 
-  return (
-    <div
-      className={cn(
-        homePageStyles.container,
-        "relative overflow-x-hidden pb-24",
-      )}
+  const techStack = [
+    { name: "Java", icon: FaJava },
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "Prisma", icon: SiPrisma },
+    { name: "LangChain", icon: SiLangchain },
+    { name: "Gen AI", icon: BsRobot },
+  ];
+
+  const Skill = ({ icon, name }: { icon: React.ReactNode; name: string }) => (
+    <span
+      className="
+      inline-flex
+      items-center
+      gap-2
+      rounded-xl
+      border
+      border-zinc-800
+      bg-zinc-900/70
+      px-3
+      py-1.5
+      text-[13px]
+      text-zinc-300
+      hover:border-zinc-700
+      hover:bg-zinc-800/80
+      transition-all
+    "
     >
-      {/* Background grid - decorative only */}
+      {icon}
+      {name}
+    </span>
+  );
+
+  return (
+    <>
+      {/* Grid — fixed to full viewport, always visible behind everything */}
       <div
         className={cn(
-          homePageStyles.backgroundGrid.wrapper,
-          homePageStyles.backgroundGrid.pattern,
+          "pointer-events-none select-none fixed inset-0 -z-20 bg-grid",
         )}
       />
 
+      {/* Gradient overlay — fixed, decorative only */}
+      <div className="fixed inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none -z-10" />
+
+      {/* Spotlight */}
       {/* <Spotlight className={spotlightStyles.position} fill="blue" /> */}
 
-      {/* Gradient overlay - decorative only, no content inside */}
-      <div className={cn(homePageStyles.gradientOverlay, "absolute inset-0")} />
+      {/* Page content */}
+      <div className={cn(homePageStyles.container, "overflow-x-hidden pb-24")}>
+        <section className={cn(homePageStyles.heroSection, "relative z-10")}>
+          <div className="relative">
+            <h1 className={homePageStyles.h1}>
+              {"Hey, I'm "}
+              <span className={homePageStyles.spanWithMargin}>Yash</span>
+            </h1>
 
-      {/* Actual page content - sibling of overlay, not inside it */}
-      <section className={cn(homePageStyles.heroSection, "relative z-10")}>
-        <div className="relative">
-          <h1 className={homePageStyles.h1}>
-            Hey, I&apos;m{" "}
-            <span className={homePageStyles.spanWithMargin}>Yash</span>
-          </h1>
+            <h2 className={homePageStyles.h2}>
+              Full Stack{" "}
+              <span className={homePageStyles.spanInline}>
+                <PointerHighlight>Developer</PointerHighlight>
+              </span>
+            </h2>
 
-          <h2 className={homePageStyles.h2}>
-            Full Stack{" "}
-            <span className={homePageStyles.spanInline}>
-              <PointerHighlight>Developer</PointerHighlight>
-            </span>
-          </h2>
-
-          <div className="mb-6">
-            <div className={homePageStyles.calloutCard.wrapper}>
-              <div className={homePageStyles.calloutCard.innerContainer}>
-                <div className={homePageStyles.calloutCard.textContainer}>
-                  <svg
-                    className={homePageStyles.calloutCard.icon}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 19V5M5 12l7-7 7 7"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-
-                  <div className={homePageStyles.calloutCard.text}>
-                    Connect with me on X
+            {/* <div className="mb-6">
+              <div className={homePageStyles.calloutCard.wrapper}>
+                <div className={homePageStyles.calloutCard.innerContainer}>
+                  <div className={homePageStyles.calloutCard.textContainer}>
+                    <svg
+                      className={homePageStyles.calloutCard.icon}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 19V5M5 12l7-7 7 7"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <div className={homePageStyles.calloutCard.text}>
+                      Connect with me on X
+                    </div>
                   </div>
+                  <button
+                    type="button"
+                    aria-label="Follow on X"
+                    className={homePageStyles.calloutCard.button}
+                  >
+                    Follow
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  aria-label="Follow on X"
-                  className={homePageStyles.calloutCard.button}
+              </div>
+            </div> */}
+
+            {/* social links */}
+
+            <div className="mb-8">
+              <div className="flex gap-3">
+                <a
+                  href="..."
+                  title="GitHub"
+                  className="p-3 rounded-full border border-zinc-800 hover:border-zinc-600 hover:bg-zinc-900/50 transition-all"
                 >
-                  Follow
-                </button>
+                  <Github size={18} />
+                </a>
+
+                <a
+                  href="..."
+                  title="LinkedIn"
+                  className="p-3 rounded-full border border-zinc-800 hover:border-blue-600 hover:bg-zinc-900/50 transition-all"
+                >
+                  <Linkedin size={18} />
+                </a>
+
+                <a
+                  href="..."
+                  title="Email"
+                  className="p-3 rounded-full border border-zinc-800 hover:border-red-600 hover:bg-zinc-900/50 transition-all"
+                >
+                  <Mail size={18} />
+                </a>
+
+                <a
+                  href="..."
+                  title="LeetCode"
+                  className="p-3 rounded-full border border-zinc-800 hover:border-orange-800 hover:bg-zinc-900/50 transition-all"
+                >
+                  <Code2 size={18} />
+                </a>
+              </div>
+            </div>
+
+            <p className={`${homePageStyles.paragraph} text-left`}>
+              I build full-stack applications using{" "}
+              <span className="font-medium text-zinc-100 hover:text-blue-400 transition-colors">
+                React
+              </span>
+              ,{" "}
+              <span className="font-medium text-zinc-100 hover:text-gray-600 transition-colors">
+                Next.js
+              </span>
+              ,{" "}
+              <span className="font-medium text-zinc-100 hover:text-green-300 transition-colors">
+                Node.js
+              </span>
+              ,{" "}
+              <span className="font-medium text-zinc-100 hover:text-emerald-600 transition-colors">
+                MongoDB
+              </span>
+              , and{" "}
+              <span className="font-medium text-zinc-100 hover:text-sky-400 transition-colors">
+                PostgreSQL
+              </span>
+              . Currently exploring{" "}
+              <span className="font-medium text-zinc-100 hover:text-red-400 transition-colors">
+                Generative AI
+              </span>
+              , contributing to open source, and building projects that solve
+              real-world problems.
+            </p>
+
+            {/* GitHub Graph */}
+
+            <div className="mt-8">
+              <h3 className="mb-4 text-sm uppercase tracking-wider text-zinc-500">
+                GitHub Contributions
+              </h3>
+
+              <div
+                className="overflow-x-auto no-scrollbar
+  rounded-2xl
+  border border-zinc-800/60
+  bg-zinc-900/30
+  backdrop-blur-sm
+  p-5"
+              >
+                <GitHubCalendar
+                  username="YashSikarwar28"
+                  colorScheme="dark"
+                  blockSize={9}
+                  blockMargin={3}
+                  fontSize={12}
+                  theme={{
+                    dark: [
+                      "#18181b", // no contributions
+                      "#27272a",
+                      "#3f3f46",
+                      "#52525b",
+                      "#71717a", // highest contributions
+                    ],
+                  }}
+                />
+              </div>
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mt-8 mb-4">
+              Tech Stack
+            </h2>
+
+            <p className="text-zinc-400 mb-10">
+              This list grows faster than my GitHub stars — and I kinda like
+              that.
+            </p>
+            <div className="mt-2">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+                {"< Languages />"}
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Skill icon={<FaJava />} name="Java" />
+                <Skill icon={<SiJavascript />} name="JavaScript" />
+                <Skill icon={<SiTypescript />} name="TypeScript" />
+                <Skill icon={<SiPython />} name="Python" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+                {"< Frontend />"}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                <Skill icon={<SiReact />} name="React" />
+                <Skill icon={<SiNextdotjs />} name="Next.js" />
+                <Skill icon={<SiTailwindcss />} name="Tailwind CSS" />
+                <Skill icon={<SiRedux />} name="Redux" />
+                <Skill icon={<SiBootstrap />} name="Bootstrap" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+                {"< Backend />"}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                <Skill icon={<SiNodedotjs />} name="Node.js" />
+                <Skill icon={<SiExpress />} name="Express.js" />
+                <Skill icon={<TbApi />} name="REST APIs" />
+                <Skill icon={<SiPrisma />} name="Prisma" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+                {"< Database />"}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                <Skill icon={<SiMongodb />} name="MongoDB" />
+                <Skill icon={<SiPostgresql />} name="PostgreSQL" />
+                <Skill icon={<SiMysql />} name="MySQL" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+                {"< In Progress />"}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                <Skill icon={<SiLangchain />} name="LangChain" />
+                <Skill icon={<TbBrain />} name="Gen AI" />
+                <Skill icon={<SiLanggraph />} name="LangGraph" />
               </div>
             </div>
           </div>
-
-          <p className={homePageStyles.paragraph}>
-            I turn fuzzy ideas into live Products (<em>quickly</em>) —
-            full-stack AI Builder. Currently working as a Founding Engineer at{" "}
-            <a
-              className={homePageStyles.link}
-              href="https://invoicegenerator-frontend-tdng.onrender.com/"
-            >
-              Invoice-AI
-            </a>
-            . I have built multiple products in past 5 years; raised $100K
-            funding for my startup{" "}
-            <a className={homePageStyles.link} href="#">
-              hexagondigitalservices.com
-            </a>
-          </p>
-
-          <article className={homePageStyles.article.wrapper}>
-            <div className={homePageStyles.article.videoContainer}>
-              <video
-                ref={videoref}
-                className={homePageStyles.article.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                disablePictureInPicture
-                disableRemotePlayback
-                style={homePageStyles.article.videoStyles}
-              >
-                <source src="/homevideo.webm" type="video/webm" />
-                Your browser does not support the video tag
-              </video>
-            </div>
-
-            <div className={homePageStyles.article.content}>
-              <div className={homePageStyles.article.header}>
-                <svg
-                  className={homePageStyles.article.headerIcon}
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
-                <span>Featured Work</span>
-              </div>
-              <h3 className={homePageStyles.article.title}>
-                My 2026: shippings, signal, and a few uncomfortable rules
-              </h3>
-              <p className={homePageStyles.article.description}>
-                A candid review of 2025 into 2026. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Officia, amet.
-              </p>
-              <div className={homePageStyles.article.linkContainer}>
-                <Link href="/projects" className={homePageStyles.article.link}>
-                  <span>See my projects</span>
-                  <svg
-                    className={homePageStyles.article.linkIcon}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
 
-
-// //error around 1:56
 // "use client";
 
 // import { cn } from "@/lib/utils";
@@ -179,6 +326,7 @@ export default function HomePage(): React.ReactElement {
 // import { Spotlight } from "./components/ui/Spotlight";
 // import { PointerHighlight } from "./components/ui/pointer-highlight";
 // import Link from "next/link";
+// import ProjectsPage from "./projects/page";
 
 // export default function HomePage(): React.ReactElement {
 //   const videoref = useRef<HTMLVideoElement>(null);
@@ -192,143 +340,151 @@ export default function HomePage(): React.ReactElement {
 //   }, []);
 
 //   return (
-//     <>
-//       <div className={homePageStyles.container}>
-//         <div
-//           className={cn(
-//             homePageStyles.backgroundGrid.wrapper,
-//             homePageStyles.backgroundGrid.pattern,
-//           )}
-//         />
-//         <Spotlight className={spotlightStyles.position} fill="blue" />
+//     <div
+//       className={cn(
+//         homePageStyles.container,
+//         "relative overflow-x-hidden pb-24",
+//       )}
+//     >
+//       {/* Background grid - decorative only */}
+//       <div
+//         className={cn(
+//           homePageStyles.backgroundGrid.wrapper,
+//           homePageStyles.backgroundGrid.pattern,
+//         )}
+//       />
 
-//         <div className={homePageStyles.gradientOverlay}>
-//           <section className={homePageStyles.heroSection}>
-//             <div className="relative">
-//               <h1 className={homePageStyles.h1}>
-//                 Hey, I&apos;m{" "}
-//                 <span className={homePageStyles.spanWithMargin}>
-//                   Yash
-//                 </span>
-//                 </h1>
-//               <h2 className={homePageStyles.h2}>
-//                 Full Stack{" "}
-//                 <span className={homePageStyles.spanInline}>
-//                   <PointerHighlight>Developer</PointerHighlight>
-//                 </span>
-//               </h2>
+//       {/* <Spotlight className={spotlightStyles.position} fill="blue" /> */}
 
-//               <div className="mb-6">
-//                 <div className={homePageStyles.calloutCard.wrapper}>
-//                   <div className={homePageStyles.calloutCard.innerContainer}>
-//                     <div className={homePageStyles.calloutCard.textContainer}>
-//                       <svg
-//                         className={homePageStyles.calloutCard.icon}
-//                         viewBox="0 0 24 24"
-//                         fill="none"
-//                         stroke="currentColor"
-//                         aria-hidden
-//                       >
-//                         <path d="M3 1219-9 9 9" strokeWidth="1.2" />
-//                       </svg>
+//       {/* Gradient overlay - decorative only, no content inside */}
+//       <div className={cn(homePageStyles.gradientOverlay, "absolute inset-0")} />
 
-//                       <div className={homePageStyles.calloutCard.text}>
-//                         Connect with me on X
-//                       </div>
-//                     </div>
-//                     <button
-//                       type="button"
-//                       aria-label="Follow on X"
-//                       className={homePageStyles.calloutCard.button}
-//                     >
-//                       Follow
-//                     </button>
-//                   </div>
-//                 </div>
-//               </div>
+//       {/* Actual page content - sibling of overlay, not inside it */}
+//       <section className={cn(homePageStyles.heroSection, "relative z-10")}>
+//         <div className="relative">
+//           <h1 className={homePageStyles.h1}>
+//             Hey, I&apos;m{" "}
+//             <span className={homePageStyles.spanWithMargin}>Yash</span>
+//           </h1>
 
-//               <p className={homePageStyles.paragraph}>
-//                 I turn fuzzy ideas into live Products (<em>quickly</em>) —
-//                 full-stack AI Builder. Currently working as a Founding Engineer
-//                 at{" "}
-//                 <a
-//                   className={homePageStyles.link}
-//                   href="https://invoicegenerator-frontend-tdng.onrender.com/"
-//                 >
-//                   Invoice-AI
-//                 </a>
-//                 . I have built multiple products in past 5 years; raised $100K
-//                 funding for my startup{" "}
-//                 <a className={homePageStyles.link} href="#">
-//                   hexagondigitalservices.com
-//                 </a>
-//               </p>
-//               <article className={homePageStyles.article.wrapper}>
-//                 <div className={homePageStyles.article.videoContainer}>
-//                   <video
-//                     ref={videoref}
-//                     className={homePageStyles.article.video}
-//                     autoPlay
-//                     muted
-//                     loop
-//                     playsInline
-//                     preload="auto"
-//                     disablePictureInPicture
-//                     disableRemotePlayback
-//                     style={homePageStyles.article.videoStyles}
+//           <h2 className={homePageStyles.h2}>
+//             Full Stack{" "}
+//             <span className={homePageStyles.spanInline}>
+//               <PointerHighlight>Developer</PointerHighlight>
+//             </span>
+//           </h2>
+
+//           <div className="mb-6">
+//             <div className={homePageStyles.calloutCard.wrapper}>
+//               <div className={homePageStyles.calloutCard.innerContainer}>
+//                 <div className={homePageStyles.calloutCard.textContainer}>
+//                   <svg
+//                     className={homePageStyles.calloutCard.icon}
+//                     viewBox="0 0 24 24"
+//                     fill="none"
+//                     stroke="currentColor"
+//                     aria-hidden="true"
 //                   >
-//                     <source src="/homevideo.webm" type="video/webm" />
-//                     Your browser does not supports the video tag
-//                   </video>
-//                 </div>
+//                     <path
+//                       d="M12 19V5M5 12l7-7 7 7"
+//                       strokeWidth="1.5"
+//                       strokeLinecap="round"
+//                       strokeLinejoin="round"
+//                     />
+//                   </svg>
 
-//                 <div className={homePageStyles.article.content}>
-//                   <div className={homePageStyles.article.header}>
-//                     <svg
-//                       className={homePageStyles.article.headerIcon}
-//                       fill="currentColor"
-//                       viewBox="0 0 24 24"
-//                       aria-hidden="true"
-//                     >
-//                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-//                     </svg>
-//                     <span>Featured Work</span>
-//                   </div>
-//                   <h3 className={homePageStyles.article.title}>
-//                     My 2026:shippings, signal, and a few uncomfortable rules
-//                   </h3>
-//                   <p className={homePageStyles.article.description}>
-//                     A candid review of 2025 into 2026. Lorem ipsum dolor sit
-//                     amet consectetur adipisicing elit. Officia, amet.
-//                   </p>
-//                   <div className={homePageStyles.article.linkContainer}>
-//                     <Link
-//                       href="/projects"
-//                       className={homePageStyles.article.link}
-//                     >
-//                       <span>See my projects</span>
-//                       <svg
-//                         className={homePageStyles.article.linkIcon}
-//                         fill="none"
-//                         stroke="currentColor"
-//                         viewBox="0 0 24 24"
-//                         aria-hidden
-//                       >
-//                         <path
-//                           strokeLinecap="round"
-//                           strokeLinejoin="round"
-//                           strokeWidth={2}
-//                           d="M14 5l7 7m0 0l-7 7m7-7H3"
-//                         />
-//                       </svg>
-//                     </Link>
+//                   <div className={homePageStyles.calloutCard.text}>
+//                     Connect with me on X
 //                   </div>
 //                 </div>
-//               </article>
+//                 <button
+//                   type="button"
+//                   aria-label="Follow on X"
+//                   className={homePageStyles.calloutCard.button}
+//                 >
+//                   Follow
+//                 </button>
+//               </div>
 //             </div>
-//           </section>
+//           </div>
+
+//           <p className={homePageStyles.paragraph}>
+//             I turn fuzzy ideas into live Products (<em>quickly</em>) —
+//             full-stack AI Builder. Currently working as a Founding Engineer at{" "}
+//             <a
+//               className={homePageStyles.link}
+//               href="https://invoicegenerator-frontend-tdng.onrender.com/"
+//             >
+//               Invoice-AI
+//             </a>
+//             . I have built multiple products in past 5 years; raised $100K
+//             funding for my startup{" "}
+//             <a className={homePageStyles.link} href="#">
+//               hexagondigitalservices.com
+//             </a>
+//           </p>
+
+//           <article className={homePageStyles.article.wrapper}>
+//             <div className={homePageStyles.article.videoContainer}>
+//               <video
+//                 ref={videoref}
+//                 className={homePageStyles.article.video}
+//                 autoPlay
+//                 muted
+//                 loop
+//                 playsInline
+//                 preload="auto"
+//                 disablePictureInPicture
+//                 disableRemotePlayback
+//                 style={homePageStyles.article.videoStyles}
+//               >
+//                 <source src="/homevideo.webm" type="video/webm" />
+//                 Your browser does not support the video tag
+//               </video>
+//             </div>
+
+//             <div className={homePageStyles.article.content}>
+//               <div className={homePageStyles.article.header}>
+//                 <svg
+//                   className={homePageStyles.article.headerIcon}
+//                   fill="currentColor"
+//                   viewBox="0 0 24 24"
+//                   aria-hidden="true"
+//                 >
+//                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+//                 </svg>
+//                 <span>Featured Work</span>
+//               </div>
+//               <h3 className={homePageStyles.article.title}>
+//                 My 2026: shippings, signal, and a few uncomfortable rules
+//               </h3>
+//               <p className={homePageStyles.article.description}>
+//                 A candid review of 2025 into 2026. Lorem ipsum dolor sit amet
+//                 consectetur adipisicing elit. Officia, amet.
+//               </p>
+//               <div className={homePageStyles.article.linkContainer}>
+//                 <Link href="/projects" className={homePageStyles.article.link}>
+//                   <span>See my projects</span>
+//                   <svg
+//                     className={homePageStyles.article.linkIcon}
+//                     fill="none"
+//                     stroke="currentColor"
+//                     viewBox="0 0 24 24"
+//                     aria-hidden="true"
+//                   >
+//                     <path
+//                       strokeLinecap="round"
+//                       strokeLinejoin="round"
+//                       strokeWidth={2}
+//                       d="M14 5l7 7m0 0l-7 7m7-7H3"
+//                     />
+//                   </svg>
+//                 </Link>
+//               </div>
+//             </div>
+//           </article>
 //         </div>
-//       </div>
-//     </>
+//       </section>
+//     </div>
 //   );
 // }

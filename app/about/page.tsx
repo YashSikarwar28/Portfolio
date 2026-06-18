@@ -5,12 +5,11 @@ import Link from "next/link";
 export default function AboutPage() {
   const interests = [
     "FULL-STACK DEV",
-    "AI ENGINEER",
+    "AI PRACTITIONER",
+    "DSA",
     "LLMS",
-    "TRAVEL",
     "MUSIC",
     "F1",
-    "READING",
   ];
 
   const techStack = [
@@ -50,7 +49,7 @@ export default function AboutPage() {
             <div className={aboutPageStyles.techStackContainer}>
               {techStack.map((tech) => (
                 <span key={tech} className={aboutPageStyles.techPill}>
-                    {tech}
+                  {tech}
                 </span>
               ))}
             </div>
@@ -59,10 +58,12 @@ export default function AboutPage() {
               <section>
                 <h2 className={aboutPageStyles.sectionHeading}>Who I Am</h2>
                 <p className={aboutPageStyles.paragraph}>
-                  Hello! I&apos;m Virat, a Bengaluru-based engineer passionate
-                  about building tools that simplify people&apos;s lives.
-                  I&apos;ve been coding since 2018, writing about AI, LLMs,
-                  frontend, backend, Rails and databases.
+                  Hey! I'm Yash, a Computer Science student who enjoys building
+                  things for the internet. Most of my time is spent developing
+                  projects, learning new technologies, and improving my
+                  problem-solving skills through DSA. I'm always curious about
+                  how things work and constantly looking for opportunities to
+                  build, learn, and grow as a developer.
                 </p>
               </section>
 
@@ -70,28 +71,20 @@ export default function AboutPage() {
               <section>
                 <h2 className={aboutPageStyles.sectionHeading}>What I Do</h2>
                 <p className={aboutPageStyles.paragraph}>
-                  Currently a Founding Engineer at{" "}
+                  I'm a third-year Computer Science student at
                   <a
-                    href="https://hexagondigitalservices.com"
+                    href="https://www.sathyabama.ac.in/"
                     className={aboutPageStyles.contentLink}
+                    target="_blank"
                   >
-                    Hexagon Digital Services
+                    {" "} Sathyabama Institute of Science and Technology
                   </a>
-                  , building workflow automation for insurance brokers. I focus
-                  on building practical, user-facing products - less demo
-                  energy, more things people actually use daily.
-                </p>
-              </section>
-
-              {/* My Journey */}
-              <section>
-                <h2 className={aboutPageStyles.sectionHeading}>My Journey</h2>
-                <p className={aboutPageStyles.paragraph}>
-                  Co-founder of Hexagon Digital Services, Engagebud and
-                  Influencerbit — led product development and design across
-                  multiple startups. Recently shipped AI Invoive Generator (100+
-                  daily users), an WEB AI TOOL, and several micro-builds,
-                  keeping the shipping momentum going.
+                  , Chennai. I build full-stack applications, experiment with
+                  AI-powered products, and enjoy solving real-world problems
+                  through technology. Currently, I'm focused on full-stack
+                  development, Generative AI, open source, and Data Structures &
+                  Algorithms while continuously building projects and expanding
+                  my technical skills.
                 </p>
               </section>
 
@@ -104,15 +97,7 @@ export default function AboutPage() {
                 </p>
               </section>
 
-              {/* Beyond Code */}
-              <section>
-                <h2 className={aboutPageStyles.sectionHeading}>Beyond Code</h2>
-                <p className={aboutPageStyles.paragraph}>
-                  Love techno & house music, follow F1 (Max), play chess, and
-                  read regularly. Travelled recently to Bali, and a month in
-                  Thailand/Vietnam in 2025.
-                </p>
-              </section>
+             
             </div>
 
             <div className={aboutPageStyles.ctaContainer}>
@@ -145,7 +130,7 @@ export default function AboutPage() {
                   />
                 </svg>
                 E-Mail
-              </a>  
+              </a>
             </div>
           </div>
         </div>

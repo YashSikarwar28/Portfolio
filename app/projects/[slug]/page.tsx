@@ -81,13 +81,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
 
-        <div className={s.imageContainer}>
+        {/* <div className={s.imageContainer}>
           <img
             src={project.image}
             alt={project.title}
             className={s.projectImage}
           />
-        </div>
+        </div> */}
 
         <div className={s.gridContainer}>
           <div className={s.mainContent}>
@@ -168,7 +168,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </section>
 
-            <section className={s.sidebarSection}>
+            {/* <section className={s.sidebarSection}>
               <h3 className={s.sidebarSectionTitle}>Project Info</h3>
               <div className={s.projectInfoContainer}>
                 <div>
@@ -192,7 +192,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <p className={s.projectInfoText}>{project.tags[0]}</p>
                 </div>
               </div>
-            </section>
+            </section> */}
           </div>
         </div>
       </div>
@@ -206,7 +206,7 @@ export async function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetaData({ params }: ProjectPageProps) {
+export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) {

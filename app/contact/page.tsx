@@ -86,7 +86,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className={contactPageStyles.contactMethodsGrid}>
+          {/* <div className={contactPageStyles.contactMethodsGrid}>
             <a
               href="mailto:yashsikarwar028@gmail.com"
               className={contactPageStyles.contactCard}
@@ -132,7 +132,7 @@ export default function Contact() {
                 <p className={contactPageStyles.contactValue}>@YashzzTwt</p>
               </div>
             </a>
-          </div>
+          </div> */}
 
           <form
             onSubmit={handleSubmit}
@@ -245,13 +245,6 @@ export default function Contact() {
           </form>
         </div>
 
-        <p className={contactPageStyles.alternativeText}>
-          Prefer to schedule a call?{" "}
-          <a href="#" className={contactPageStyles.alternativeLink}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
-            repellendus!
-          </a>
-        </p>
       </div>
     </div>
   );
