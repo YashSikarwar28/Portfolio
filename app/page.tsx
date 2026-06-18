@@ -148,15 +148,17 @@ export default function HomePage(): React.ReactElement {
             <div className="mb-8">
               <div className="flex gap-3">
                 <a
-                  href="..."
+                  href="https://github.com/YashSikarwar28"
                   title="GitHub"
+                  target="_blank"
                   className="p-3 rounded-full border border-zinc-800 hover:border-zinc-600 hover:bg-zinc-900/50 transition-all"
                 >
                   <Github size={18} />
                 </a>
 
                 <a
-                  href="..."
+                  href="https://www.linkedin.com/in/yash-sikarwar-sist/"
+                  target="_blank"
                   title="LinkedIn"
                   className="p-3 rounded-full border border-zinc-800 hover:border-blue-600 hover:bg-zinc-900/50 transition-all"
                 >
@@ -164,15 +166,17 @@ export default function HomePage(): React.ReactElement {
                 </a>
 
                 <a
-                  href="..."
+                  href="mailto:yashsikarwar028@gmail.com"
                   title="Email"
+                  target="_blank"
                   className="p-3 rounded-full border border-zinc-800 hover:border-red-600 hover:bg-zinc-900/50 transition-all"
                 >
                   <Mail size={18} />
                 </a>
 
                 <a
-                  href="..."
+                  href="https://leetcode.com/u/Yash-Sikarwar/"
+                  target="_blank"
                   title="LeetCode"
                   className="p-3 rounded-full border border-zinc-800 hover:border-orange-800 hover:bg-zinc-900/50 transition-all"
                 >

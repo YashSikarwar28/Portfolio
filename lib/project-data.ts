@@ -73,7 +73,7 @@ export const projects: Project[] = [
       howIBuilt: "",
     },
     author: "LucidDocs",
-    authorAvatar: "/Hexagon.png",
+    authorAvatar: "/jj.png",
   },
   {
     id: "2",
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     },
 
     author: "Vidtube",
-    authorAvatar: "/Hexagon.png",
+    authorAvatar: "/jj.png",
   },
 
   {
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     },
 
     author: "BookHeaven",
-    authorAvatar: "/Hexagon.png",
+    authorAvatar: "/jj.png",
   },
 
   {
@@ -228,7 +228,7 @@ export const projects: Project[] = [
     },
 
     author: "RoadWatch",
-    authorAvatar: "/Hexagon.png",
+    authorAvatar: "/jj.png",
   },
 
 ];

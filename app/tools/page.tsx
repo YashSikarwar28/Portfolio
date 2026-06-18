@@ -42,14 +42,8 @@ const tools: Tool[] = [
   {
     name: "VS Code",
     category: "IDE",
-    icon: "/vscode.webp",
+    icon: "/VSCODE.webp",
     href: "https://code.visualstudio.com",
-  },
-  {
-    name: "Slack",
-    category: "Communication",
-    icon: "/slack.webp",
-    href: "https://slack.com",
   },
   {
     name: "Medium",
@@ -58,22 +52,10 @@ const tools: Tool[] = [
     href: "https://medium.com",
   },
   {
-    name: "Android Studio",
-    category: "IDE",
-    icon: "/android.webp",
-    href: "https://developer.android.com/studio",
-  },
-  {
     name: "Claude AI",
     category: "Productivity",
     icon: "/claude.webp",
     href: "https://claude.ai",
-  },
-  {
-    name: "Hugging Face",
-    category: "AI Platform",
-    icon: "/huggingface.webp",
-    href: "https://huggingface.co",
   },
   {
     name: "Gemini",
@@ -86,12 +68,6 @@ const tools: Tool[] = [
     category: "Productivity",
     icon: "/lovable.webp",
     href: "https://lovable.dev",
-  },
-  {
-    name: "Windsurf",
-    category: "IDE",
-    icon: "/windsurf.webp",
-    href: "https://codeium.com/windsurf",
   },
   {
     name: "Perplexity",
