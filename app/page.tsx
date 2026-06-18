@@ -5,7 +5,19 @@ import { homePageStyles, spotlightStyles } from "@/public/dummyStyles";
 import React, { useEffect, useRef } from "react";
 //import { Spotlight } from "./components/ui/Spotlight";
 import { PointerHighlight } from "./components/ui/pointer-highlight";
-import { GitHubCalendar } from "react-github-calendar";
+// import { GitHubCalendar } from "react-github-calendar";
+
+import dynamic from "next/dynamic";
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar").then((mod) => mod.GitHubCalendar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-32 w-full animate-pulse rounded-lg bg-zinc-800/50" />
+    ),
+  },
+);
+
 import Link from "next/link";
 import { Code2, Github, Linkedin, Mail } from "lucide-react";
 import {
