@@ -40,11 +40,11 @@ export const metadata: Metadata = {
     title: "Yash Sikarwar — Full Stack Developer & AI Builder",
     description:
       "Full Stack Developer and AI Practitioner building real products.",
-    url: "https://yashsikarwar.vercel.app",
+    url: "https://yash-sikarwar.vercel.app/",
     siteName: "Yash Sikarwar Portfolio",
     images: [
       {
-        url: "https://yashsikarwar.vercel.app/og-image.png",
+        url: "https://yash-sikarwar.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Yash Sikarwar Portfolio",
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
     title: "Yash Sikarwar — Full Stack Developer & AI Builder",
     description:
       "Full Stack Developer and AI Practitioner building real products.",
-    images: ["https://yashsikarwar.vercel.app/og-image.png"],
-    creator: "@HexagonDService",
+    images: ["https://yash-sikarwar.vercel.app/og-image.png"],
+    creator: "@YashzzTwt",
   },
 };
 
