@@ -79,6 +79,7 @@ export default function RootLayout({
           <main className="min-h-screen w-full">{children}</main>
           <Footer />
         </div>
+        <Analytics/>
       </body>
     </html>
   );
