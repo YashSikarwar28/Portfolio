@@ -5,6 +5,7 @@ import Sidebar from "./components/sidebar";
 import Footer from "./components/footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,18 +71,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ overflowX: "hidden" }}>
+    <html lang="en" suppressHydrationWarning style={{ overflowX: "hidden" }}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-zinc-950 text-zinc-100 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased`}
         style={{ overflowX: "hidden", maxWidth: "100vw" }}
       >
-        <Sidebar />
-        <div className="pt-15 md:pt-8 pb-15 md:pb-0 w-full overflow-x-hidden">
-          <main className="min-h-screen w-full">{children}</main>
-          <Footer />
-        </div>
-        <Analytics/>
-        <SpeedInsights/>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Sidebar />
+          <div className="pt-15 md:pt-8 pb-15 md:pb-0 w-full overflow-x-hidden">
+            <main className="min-h-screen w-full">{children}</main>
+            <Footer />
+          </div>
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );

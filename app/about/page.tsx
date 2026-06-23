@@ -22,7 +22,7 @@ export default function AboutPage() {
     "Redis",
   ];
 
-  const email: string= "yashsikarwar028@gmail.com";
+  const email: string = "yashsikarwar028@gmail.com";
 
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
 
@@ -31,9 +31,19 @@ export default function AboutPage() {
       <div className={aboutPageStyles.contentContainer}>
         <div className={aboutPageStyles.backgroundContainer}>
           <div className={aboutPageStyles.backgroundEffect}>
-            <BackgroundBeamsWithCollision />
+            <BackgroundBeamsWithCollision className="rounded-3xl" />
           </div>
-          <div className={aboutPageStyles.contentWrapper}>
+          <div
+            className="
+    relative z-10
+    rounded-3xl
+    bg-white/80
+    dark:bg-transparent
+    backdrop-blur-sm
+    p-8
+    md:p-10
+  "
+          >
             <h1 className={aboutPageStyles.mainHeading}>Yash</h1>
             <div className={aboutPageStyles.interestsContainer}>
               {interests.map((interest, index) => (
@@ -77,7 +87,8 @@ export default function AboutPage() {
                     className={aboutPageStyles.contentLink}
                     target="_blank"
                   >
-                    {" "} Sathyabama Institute of Science and Technology
+                    {" "}
+                    Sathyabama Institute of Science and Technology
                   </a>
                   , Chennai. I build full-stack applications, experiment with
                   AI-powered products, and enjoy solving real-world problems
@@ -96,8 +107,6 @@ export default function AboutPage() {
                   I strive to stay at the forefront of this transformation.
                 </p>
               </section>
-
-             
             </div>
 
             <div className={aboutPageStyles.ctaContainer}>

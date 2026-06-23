@@ -41,6 +41,7 @@ import { SiPython } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { BsRobot } from "react-icons/bs";
 import { TbApi, TbBrain } from "react-icons/tb";
+import { useTheme } from "next-themes";
 
 export default function HomePage(): React.ReactElement {
   const videoref = useRef<HTMLVideoElement>(null);
@@ -69,19 +70,26 @@ export default function HomePage(): React.ReactElement {
     <span
       className="
       inline-flex
-      items-center
-      gap-2
-      rounded-xl
-      border
-      border-zinc-800
-      bg-zinc-900/70
-      px-3
-      py-1.5
-      text-[13px]
-      text-zinc-300
-      hover:border-zinc-700
-      hover:bg-zinc-800/80
-      transition-all
+items-center
+gap-2
+rounded-xl
+border
+border-zinc-300
+dark:border-zinc-800
+bg-white
+dark:bg-zinc-900/70
+px-3
+py-1.5
+text-[13px]
+text-zinc-700
+dark:text-zinc-300
+shadow-sm
+dark:shadow-none
+hover:border-zinc-400
+dark:hover:border-zinc-700
+hover:bg-zinc-50
+dark:hover:bg-zinc-800/80
+transition-all
     "
     >
       {icon}
@@ -89,23 +97,41 @@ export default function HomePage(): React.ReactElement {
     </span>
   );
 
+  const {resolvedTheme} = useTheme();
+
   return (
     <>
       {/* Grid — fixed to full viewport, always visible behind everything */}
       <div
         className={cn(
-          "pointer-events-none select-none fixed inset-0 -z-20 bg-grid",
+          "pointer-events-none select-none hidden md:block fixed inset-0 -z-20 bg-grid",
         )}
       />
 
       {/* Gradient overlay — fixed, decorative only */}
-      <div className="fixed inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none -z-10" />
+      <div
+        className="
+    hidden md:block
+    fixed inset-0
+    bg-gradient-to-b
+    from-black/40
+    via-transparent
+    to-black/60
+    pointer-events-none
+    -z-10
+  "
+      />
 
       {/* Spotlight */}
       {/* <Spotlight className={spotlightStyles.position} fill="blue" /> */}
 
       {/* Page content */}
-      <div className={cn(homePageStyles.container, "overflow-x-hidden pb-24")}>
+      <div
+        className={cn(
+          homePageStyles.container,
+          "overflow-x-hidden pb-8 md:pb-24",
+        )}
+      >
         <section className={cn(homePageStyles.heroSection, "relative z-10")}>
           <div className="relative">
             <h1 className={homePageStyles.h1}>
@@ -197,27 +223,27 @@ export default function HomePage(): React.ReactElement {
 
             <p className={`${homePageStyles.paragraph} text-left`}>
               I build full-stack applications using{" "}
-              <span className="font-medium text-zinc-100 hover:text-blue-400 transition-colors">
+              <span className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-blue-400 transition-colors">
                 React
               </span>
               ,{" "}
-              <span className="font-medium text-zinc-100 hover:text-gray-600 transition-colors">
+              <span className="font-medium dark:text-zinc-100 text-zinc-900 hover:text-gray-600 transition-colors">
                 Next.js
               </span>
               ,{" "}
-              <span className="font-medium text-zinc-100 hover:text-green-300 transition-colors">
+              <span className="font-medium dark:text-zinc-100 text-zinc-900 hover:text-green-300 transition-colors">
                 Node.js
               </span>
               ,{" "}
-              <span className="font-medium text-zinc-100 hover:text-emerald-600 transition-colors">
+              <span className="font-medium dark:text-zinc-100 text-zinc-900 hover:text-emerald-600 transition-colors">
                 MongoDB
               </span>
               , and{" "}
-              <span className="font-medium text-zinc-100 hover:text-sky-400 transition-colors">
+              <span className="font-medium dark:text-zinc-100 text-zinc-900 hover:text-sky-400 transition-colors">
                 PostgreSQL
               </span>
               . Currently exploring{" "}
-              <span className="font-medium text-zinc-100 hover:text-red-400 transition-colors">
+              <span className="text-zinc-900 font-medium dark:text-zinc-100 hover:text-red-400 transition-colors">
                 Generative AI
               </span>
               , contributing to open source, and building projects that solve
@@ -227,47 +253,58 @@ export default function HomePage(): React.ReactElement {
             {/* GitHub Graph */}
 
             <div className="mt-8">
-              <h3 className="mb-4 text-sm uppercase tracking-wider text-zinc-500">
+              <h3 className="mb-4 text-sm uppercase tracking-wider text-zinc-800 font-semibold dark:text-zinc-500">
                 GitHub Contributions
               </h3>
 
               <div
                 className="overflow-x-auto no-scrollbar
-  rounded-2xl
-  border border-zinc-800/60
-  bg-zinc-900/30
-  backdrop-blur-sm
-  p-5"
+rounded-2xl
+border border-zinc-200
+dark:border-zinc-800/60
+bg-white
+dark:bg-zinc-900/30
+shadow-sm
+dark:shadow-none
+backdrop-blur-sm
+p-5"
               >
                 <GitHubCalendar
                   username="YashSikarwar28"
-                  colorScheme="dark"
+                  colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
                   blockSize={9}
                   blockMargin={3}
                   fontSize={12}
                   theme={{
+                    light: [
+                      "#ebedf0",
+                      "#9be9a8",
+                      "#40c463",
+                      "#30a14e",
+                      "#216e39",
+                    ],
                     dark: [
-                      "#18181b", // no contributions
+                      "#18181b",
                       "#27272a",
                       "#3f3f46",
                       "#52525b",
-                      "#71717a", // highest contributions
+                      "#71717a",
                     ],
                   }}
                 />
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mt-8 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mt-8 mb-4">
               Tech Stack
             </h2>
 
-            <p className="text-zinc-400 mb-10">
+            <p className="text-zinc-600 dark:text-zinc-400 mb-10">
               This list grows faster than my GitHub stars — and I kinda like
               that.
             </p>
             <div className="mt-2">
-              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-700 dark:text-zinc-500">
                 {"< Languages />"}
               </p>
 
@@ -279,7 +316,7 @@ export default function HomePage(): React.ReactElement {
               </div>
             </div>
             <div className="mt-4">
-              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-500">
                 {"< Frontend />"}
               </p>
 
@@ -292,7 +329,7 @@ export default function HomePage(): React.ReactElement {
               </div>
             </div>
             <div className="mt-4">
-              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-500">
                 {"< Backend />"}
               </p>
 
@@ -304,7 +341,7 @@ export default function HomePage(): React.ReactElement {
               </div>
             </div>
             <div className="mt-4">
-              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-500">
                 {"< Database />"}
               </p>
 
@@ -315,7 +352,7 @@ export default function HomePage(): React.ReactElement {
               </div>
             </div>
             <div className="mt-4">
-              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-500">
                 {"< In Progress />"}
               </p>
 
