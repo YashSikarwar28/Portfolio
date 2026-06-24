@@ -15,11 +15,9 @@ export default function AboutPage() {
   const techStack = [
     "React",
     "LLM",
-    "Rails",
     "Next.js",
     "TypeScript",
     "Postgres",
-    "Redis",
   ];
 
   const email: string = "yashsikarwar028@gmail.com";

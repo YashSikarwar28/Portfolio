@@ -3,23 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { TextHoverEffect } from "./ui/text-hover-effect";
 
-const formatTime = () => new Date().toLocaleTimeString();
-
 export default function Footer(): React.ReactElement {
-  const [timeNow, setTimeNow] = useState("");
-  
-
-  useEffect(() => {
-    setTimeNow(formatTime());
-
-    const intervalId = window.setInterval(() => {
-      setTimeNow(formatTime());
-    }, 1000);
-
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <footer
       className="
@@ -40,29 +24,33 @@ export default function Footer(): React.ReactElement {
   dark:text-zinc-300
 "
     >
-      <div className="flex flex-col md:flex-row items-center justify-between gap-1 md:gap-4 px-4 md:px-8 py-1 md:py-4">
+      <div className="flex justify-center items-center py-8">
         {/* <div className="text-lg cursor-pointer">Reach Out</div> */}
-        <div className="hidden md:flex items-center">
-          <span
+        <div className="flex flex-col items-center text-center">
+          <p
             className="
-    text-6xl
-    font-black
-    tracking-tight
-
-    text-zinc-200
-    dark:text-zinc-800
+      text-xs
+      md:text-sm
+      text-zinc-500
+      dark:text-zinc-400
     "
           >
-            YASH
-          </span>
-        </div>
+            Built with Next.js, coffee, and curiosity.
+          </p>
 
-        <div className="text-sm text-zinc-500 md:text-lg md:text-blue-600 dark:text-zinc-300">
-          {timeNow}
+          <p
+            className="
+      mt-1
+      text-[11px]
+      md:text-xs
+      text-zinc-400
+      dark:text-zinc-500
+    "
+          >
+            © {new Date().getFullYear()} Yash Sikarwar
+          </p>
         </div>
       </div>
     </footer>
   );
 }
-
-

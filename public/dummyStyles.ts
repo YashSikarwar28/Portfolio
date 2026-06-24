@@ -16,7 +16,7 @@ export const homePageStyles = {
 
   heroSection: "w-full max-w-2xl mx-auto",
 
-  h1: "text-[34px] sm:text-[48px] md:text-[55px] lg:text-[64px] leading-[1] font-extrabold tracking-tight mb-2 text-zinc-900 dark:text-zinc-100",
+  h1: "text-[28px] sm:text-[38px] md:text-[44px] lg:text-[64px] leading-[1] font-extrabold tracking-tight mb-2 text-zinc-900 dark:text-zinc-100",
 
   h2: "text-xl sm:text-2xl md:text-3xl text-zinc-600 dark:text-zinc-300 font-medium mb-6 text-left",
 

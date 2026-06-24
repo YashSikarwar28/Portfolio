@@ -42,6 +42,7 @@ import { FaJava } from "react-icons/fa";
 import { BsRobot } from "react-icons/bs";
 import { TbApi, TbBrain } from "react-icons/tb";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 export default function HomePage(): React.ReactElement {
   const videoref = useRef<HTMLVideoElement>(null);
@@ -97,7 +98,7 @@ transition-all
     </span>
   );
 
-  const {resolvedTheme} = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <>
@@ -134,17 +135,39 @@ transition-all
       >
         <section className={cn(homePageStyles.heroSection, "relative z-10")}>
           <div className="relative">
-            <h1 className={homePageStyles.h1}>
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src="/profile.png"
+                alt="Yash Sikarwar"
+                width={85}
+                height={85}
+                className="rounded-full border border-zinc-200 dark:border-zinc-700 object-cover"
+              />
+
+              <div>
+                <h1 className="text-[34px] md:text-[35px] font-bold text-zinc-900 dark:text-zinc-100">
+                  Yash Sikarwar
+                </h1>
+
+                <h2 className=" md:text-[18px] font-medium text-zinc-700 dark:text-zinc-300">
+                  Full Stack{" "}
+                  <span className={homePageStyles.spanInline}>
+                    <PointerHighlight>Developer</PointerHighlight>
+                  </span>
+                </h2>
+              </div>
+            </div>
+            {/* <h1 className={homePageStyles.h1}>
               {"Hey, I'm "}
               <span className={homePageStyles.spanWithMargin}>Yash</span>
-            </h1>
+            </h1> */}
 
-            <h2 className={homePageStyles.h2}>
+            {/* <h2 className={homePageStyles.h2}>
               Full Stack{" "}
               <span className={homePageStyles.spanInline}>
                 <PointerHighlight>Developer</PointerHighlight>
               </span>
-            </h2>
+            </h2> */}
 
             {/* <div className="mb-6">
               <div className={homePageStyles.calloutCard.wrapper}>
